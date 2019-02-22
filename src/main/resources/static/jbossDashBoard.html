@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="JbossDashBoard"> 
+<head>
+	<meta chrset="UTF 8">
+	<title>EnvDashBoard</title>
+    <link rel="stylesheet" href="/css/jbossdashboard.css"/>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"> -->
+    </script>
+	<script src="/webjars/angularjs/1.4.9/angular.js"></script>
+    <script src="/webjars/angularjs/1.4.9/angular-resource.js"></script>
+    <script src="/webjars/angularjs/1.4.9/angular-route.js"></script>
+    <script src="/js/jbossDashBoard.js"></script>
+   
+</head>
+
+<h1> <span class="yellow">EnvDashBoard</span></h1>
+<div  ng-controller="JbossDashboardCtrl">
+    <table class="container" >
+        <thead>
+            <tr>
+                <th><span class="yellow">Environment</span></th>
+                <th><span class="yellow">ENV_Status</span></th>
+                <th><span class="yellow">Application</span></th>
+                <th><span class="yellow">App_Status</span></th>
+                <th><span class="yellow">DataSource|Status</span></th>
+            </tr>
+        </thead>
+         <tbody border="1" ng-repeat="detailed in jbossJsonResponseResult ">
+                                     
+						<tr>
+					    <td><a href={{detailed.url}}>{{detailed.envType}}</a></td>
+                        <td>{{detailed.serverStatus}}</td>
+                        <td><a href={{detailed.applicationUrl}}>{{detailed.applicationName}}</td>
+                        <td>{{detailed.appStatus}}</td>
+						<td>
+						<table align="center">
+						<tr ng-repeat="datasource in detailed.dataSourceList">
+						<td>
+						{{datasource.dataSourceName}} | {{datasource.dataSourceStatus}}
+						</td>
+						</tr>
+						</table>
+						</td>
+					
+                    </tr>					
+                    
+        </tbody>
+				
+    </table>
+	<h2 class="yellow" align="center" >
+	LastUpdate: {{jbossJsonResponse.lastUpdate}}
+    </h2>
+</div>
+	
+	

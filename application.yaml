@@ -1,0 +1,34 @@
+server:
+  port: 8088
+
+jboss:
+      environment[0]:
+        envType: DEV
+        url: http://localhost:9990/management
+        userName: admin
+        password: admin123
+        appDataSourceList[0]:
+          appName: WAR1.war
+          appUrl: http://app1-dev.com
+          dataSourceName[0]: DS1
+          dataSourceName[1]: DS2
+        appDataSourceList[1]:
+          appName: WAR2.war
+          appUrl: http://app2-dev.com
+          dataSourceName[0]: DS2
+          dataSourceName[1]: DS4
+      environment[1]:
+        envType: SIT
+        url: http://localhost:9990/management
+        userName: admin
+        password: admin123
+        appDataSourceList[0]:
+          appName: WAR1.war
+          appUrl: http://app1-sit.com
+          dataSourceName[0]: DS1
+          dataSourceName[1]: DS2
+        appDataSourceList[1]:
+          appName: WAR2.war
+          appUrl: http://app2-sit.com
+          dataSourceName[0]: DS3
+          dataSourceName[1]: DS4
